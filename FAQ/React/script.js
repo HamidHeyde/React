@@ -12,6 +12,56 @@ var itemHeaderClick = function (event) {
     state.items = availableItems;
     renderApp();
 };
+var OptionAction = function (event, action) {
+    var availableItems = state.items.slice();
+    var id = Number(event.target.parentElement.parentElement.id);
+    if (action == "up") {
+        if (id != 0) {
+            var temp = availableItems[id];
+            availableItems[id] = availableItems[id - 1];
+            availableItems[id - 1] = temp;
+        }
+    } else if (action == "down") {
+        if (id != availableItems.length - 1) {
+            var temp = availableItems[id];
+            availableItems[id] = availableItems[id + 1];
+            availableItems[id + 1] = temp;
+        }
+    } else if (action == "remove") {
+        availableItems.splice(id, 1);
+    } else if (action == "edit") {
+
+        document.getElementById("txt_question").value = availableItems[id].q;
+        document.getElementById("txt_response").value = availableItems[id].r;
+        availableItems.splice(id, 1);
+
+    } else if (action == "add") {
+        var question = document.getElementById("txt_question").value;
+        if (question != "") {
+            var response = document.getElementById("txt_response").value;
+            if (response != "") {
+                var faqItem = {q: question,r: response,visible: true};
+                availableItems.push(faqItem);
+            } else {
+                state.error = {
+                    visible: true,
+                    message: "Please Enter a Response"
+                }
+            }
+        }
+        else {
+            state.error = {
+                visible: true,
+                message: "Please Enter a Question"
+            }
+        }
+
+    }
+    //Updating the Results
+    state.items = availableItems;
+    renderApp();
+
+};
 //===========GLOBALS============
 var ce = React.createElement;
 var state = {
@@ -19,7 +69,7 @@ var state = {
         {
             q: "Here is the question 1",
             r: "Here is the answer to Question 1.Here is the answer to Question 1",
-            visible: false
+            visible: true
         },
         {
             q: "Here is the question 2",
@@ -36,12 +86,12 @@ var state = {
         visible: false,
         message: "This is an Error"
     },
-    formAction: testClick,
+    formAction: function (event) { OptionAction(event, "add"); },
     itemClick: itemHeaderClick,
-    moveUpClick: testClick,
-    moveDownClick: testClick,
-    editClick: testClick,
-    removeClick: testClick
+    moveUpClick: function (event) { OptionAction(event, "up"); },
+    moveDownClick: function (event) { OptionAction(event, "down"); },
+    editClick: function (event) { OptionAction(event, "edit"); },
+    removeClick: function (event) { OptionAction(event, "remove"); }
 };
 
 
