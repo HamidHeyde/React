@@ -1,3 +1,3 @@
-Conflict test
+Conf test
 # Projects
 ### [TicTacTOe]
