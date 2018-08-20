@@ -7,6 +7,19 @@ body{
     width: 500px;
     margin: auto;
 }
+.error{
+    float: left;
+    width:100%;
+    background-color: crimson;
+    color: #eee;
+    text-align: center;
+    height: 50px;
+    border-radius: 10px;
+    box-sizing: border-box;
+    overflow: hidden;
+    margin-top: 20px;
+    padding-top: 15px;
+}
 .form, .items{
     background: transparent;
     width: 100%;
@@ -16,6 +29,7 @@ body{
 }
 .items{margin-bottom: 50px;}
 .form .header{
+    margin-top: 20px;
     background-color: #eee;
     width: 100%;
     float: left;
@@ -126,8 +140,15 @@ input[type=button]{
     border-radius: 0 0 10px 10px;
     font-size: 13px;
     color: #444;
-    display: none;
+    /* display: none; */
 }
 .item .content.clicked{
     display: block;
+}
+.visible{
+    display: block;
+}
+
+.invisible{
+    display: none;
 }
