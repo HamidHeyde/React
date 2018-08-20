@@ -1,6 +1,6 @@
 # FAQ
 Through this project FAQ application is implemented using 2 following approaches: (So, using the same logic, there would be way to compare these approaches from implementation point-of-view)
-<img src="faq.jpeg" align="right"/>
+<img src="faq.jpeg" align="right" width="310" height="300"/>
 
 #### [Javascript](https://github.com/HamidHeyde/ReactJs/tree/master/FAQ/JavaScript)
 * using traditional JavaScript, HTML, CSS, this app has been implemented
