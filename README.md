@@ -2,7 +2,7 @@
 
 ## [Tic Tac Toe](https://github.com/HamidHeyde/ReactJs/tree/master/TicTacToe)
 Through this project "Tic Tac Toe" game is implemented using 3 following approaches: (So, using the same logic, there would be way to compare these approaches from implementation point-of-view)
-
+<img src="TicTacToe/tictactoe.jpeg" align="right" width="205" height="240"/>
 * [Javascript](https://github.com/HamidHeyde/ReactJs/tree/master/TicTacToe/JavaScript)
 using traditional JavaScript, HTML, CSS, this game has been implemented
 * [React](https://github.com/HamidHeyde/ReactJs/tree/master/TicTacToe/React)
