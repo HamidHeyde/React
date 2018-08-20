@@ -1,4 +1,4 @@
-Conflict test
+Conflict 2 test 2
 # Projects
-Here is a new line
+line conflic
 ### [TicTacTOe]
