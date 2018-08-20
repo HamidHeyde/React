@@ -1,0 +1,32 @@
+<html>
+<head>
+    <title>FAQ</title>
+    <link rel="stylesheet" type="text/css" href="index.css" />
+    <script src="index.js"></script>
+</head>
+<body>
+    <div class="wrapper">
+        <div class="form">
+            <div class="header">
+                <div class="title">INSERT NEW ITEM</div>
+            </div>
+            <div class="content">
+                <div class="title">Question</div>
+                <div class="text">
+                    <input id="txt_question" type="text" placeholder="Your Question"/>
+                </div>
+                <div class="title">Response</div>
+                <div class="text">
+                        <textarea id="txt_response"
+                        cols="30" rows="5" placeholder="Your Response"></textarea>
+                </div>
+                <div class="button">
+                    <input id="btn_add" type="button" value="Add Item" onclick="add_item()">
+                </div>
+            </div>
+        </div>
+        <div class="items">
+        </div>
+    </div>
+</body>
+</html>
