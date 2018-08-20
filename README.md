@@ -10,7 +10,7 @@ Using [Create React App]] this game has been implemented [same logic]. In this p
 * [React No ES6](https://github.com/HamidHeyde/ReactJs/tree/master/TicTacToe/ReactNoEs6)
 Through this approach, the same logic has been implemented, without using any dependencies. Using this approach we can easily start developing React application without installing anyother dependencins and view the final product through running the index.html
 
-## [FAQ](https://github.com/HamidHeyde/ReactJs/tree/master/TicTacToe)
+## [FAQ](https://github.com/HamidHeyde/ReactJs/tree/master/FAQ)
 Through this project FAQ application is implemented using 2 following approaches: (So, using the same logic, there would be way to compare these approaches from implementation point-of-view)
 <img src="FAQ/faq.jpeg" align="right" width="310" height="300"/>
 * [Javascript](https://github.com/HamidHeyde/ReactJs/tree/master/FAQ/JavaScript)
