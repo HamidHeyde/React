@@ -1,6 +1,6 @@
 # Projects
 
-## [Tic Tac Toe](https://github.com/HamidHeyde/ReactJs/tree/master/TicTacToe) [Javascript, React, React No ES6]
+## [Tic Tac Toe](https://github.com/HamidHeyde/ReactJs/tree/master/TicTacToe)
 Through this project "Tic Tac Toe" game is implemented using 3 following approaches: (So, using the same logic, there would be way to compare these approaches from implementation point-of-view)
 
 * [Javascript](https://github.com/HamidHeyde/ReactJs/tree/master/TicTacToe/JavaScript)
