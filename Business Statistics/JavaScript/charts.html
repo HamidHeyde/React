@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Chart Sample</title>
+    <link rel="stylesheet" href="css/charts.css">
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+  </head>
+  <body>
+    <div class="message">
+
+    </div>
+    <div class="wrapper">
+      <div class="header">
+        <div class="content">
+          <div class="userMgmt">
+            <div class="text">View As:</div>
+            <div class="userMenu" onclick="AccessMenu(this)">
+              <div class="selected">Aministrator: Access (All)</div>
+                <div class="arrow">&#9660;</div>
+              <div class="subMenuWrapper">
+                <div onclick="SetAccess(this,1,2,3,4)">Aministrator: Access (All)</div>
+                <div onclick="SetAccess(this,1,2,0,0)">User 1: Access (1:2)</div>
+                <div onclick="SetAccess(this,1,0,0,4)">User 2: Access (1:4)</div>
+                <div onclick="SetAccess(this,0,2,3,0)">User 3: Access (2:3)</div>
+              </div>
+            </div>
+          </div>
+          <div class="optionsIcon">
+            <div></div>
+            <div></div>
+            <div></div>
+          </div>
+        </div>
+      </div>
+      <div class="application">
+        <div class="content">
+
+          <div class="chartWrapper">
+            <div class="title">
+              <div class="dragdrop"><div></div></div>
+              <div class="text">Chart #1 : Star Rating</div>
+              <div class="optionsIcon">
+                <div class="icon">
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                </div>
+                <div class="menu">
+                  <div class="subMenu">Close</div>
+                  <div class="subMenu">Options</div>
+                </div>
+              </div>
+            </div>
+            <div class="charts">
+              <div class="options">
+                <div class="row">
+                  <div class="label">From:</div>
+                  <div class="date"><input type="date"></div>
+                </div>
+                <div class="row">
+                  <div class="label">To:</div>
+                  <div class="date"><input type="date"></div>
+                </div>
+                <div class="row">
+                  <div class="closeIcon">Close</div>
+                </div>
+              </div>
+              <div class="pie"></div>
+            </div>
+          </div>
+
+          <div class="chartWrapper">
+            <div class="title">
+              <div class="dragdrop"><div></div></div>
+              <div class="text">Chart #2 : Average Cost</div>
+              <div class="optionsIcon">
+                <div class="icon">
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                </div>
+                <div class="menu">
+                  <div class="subMenu">Close</div>
+                  <div class="subMenu">Options</div>
+                </div>
+              </div>
+            </div>
+            <div class="charts">
+              <div class="options">
+                <div class="row">
+                  <div class="label">From:</div>
+                  <div class="date"><input type="date"></div>
+                </div>
+                <div class="row">
+                  <div class="label">To:</div>
+                  <div class="date"><input type="date"></div>
+                </div>
+                <div class="row">
+                  <div class="closeIcon">Close</div>
+                </div>
+              </div>
+              <div class="pie"></div>
+            </div>
+          </div>
+
+          <div class="chartWrapper">
+            <div class="title">
+              <div class="dragdrop"><div></div></div>
+              <div class="text">Chart #3 : Expenses</div>
+              <div class="optionsIcon">
+                <div class="icon">
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                </div>
+                <div class="menu">
+                  <div class="subMenu">Close</div>
+                  <div class="subMenu">Options</div>
+                </div>
+              </div>
+            </div>
+            <div class="charts">
+              <div class="options">
+                <div class="row">
+                  <div class="label">From:</div>
+                  <div class="date"><input type="date"></div>
+                </div>
+                <div class="row">
+                  <div class="label">To:</div>
+                  <div class="date"><input type="date"></div>
+                </div>
+                <div class="row">
+                  <div class="closeIcon">Close</div>
+                </div>
+              </div>
+              <div class="pie"></div>
+            </div>
+          </div>
+
+          <div class="chartWrapper">
+            <div class="title">
+              <div class="dragdrop"><div></div></div>
+              <div class="text">Chart #4 : Product Return</div>
+              <div class="optionsIcon">
+                <div class="icon">
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                </div>
+                <div class="menu">
+                  <div class="subMenu">Close</div>
+                  <div class="subMenu">Options</div>
+                </div>
+              </div>
+            </div>
+            <div class="charts">
+              <div class="options">
+                <div class="row">
+                  <div class="label">From:</div>
+                  <div class="date"><input type="date"></div>
+                </div>
+                <div class="row">
+                  <div class="label">To:</div>
+                  <div class="date"><input type="date"></div>
+                </div>
+                <div class="row">
+                  <div class="closeIcon">Close</div>
+                </div>
+              </div>
+              <div class="pie"></div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+      <div class="footer">
+        <div class="content">
+          <div>Product of Sample Company. All Rights Reserved.</div>
+          <div>&#169;</div>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script type="text/javascript" src="js/index.js"></script>
+</html>
