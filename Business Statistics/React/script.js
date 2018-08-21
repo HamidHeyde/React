@@ -6,15 +6,35 @@ var topMenuClick = function (event) {
     state.subMenus.visible = !state.subMenus.visible;
     renderApp();
 };
+var chartsMenuIconClick = function (id) {
+    state.charts.items[id].menu = !state.charts.items[id].menu;
+    renderApp();
+};
+var chartsIconCloseClick = function (id) {
+    state.charts.items[id].visible = !state.charts.items[id].visible;
+    renderApp();
+};
+var chartsIconSettingsClick = function (id) {
+    state.charts.items[id].settings = !state.charts.items[id].settings;
+    renderApp();
+};
 //===========GLOBALS============
 var ce = React.createElement;
 var state = {
-    charts: [
-        { visible: true, title: "Chart #1 : Star Rating" },
-        { visible: true, title: "Chart #2 : Average Cost" },
-        { visible: true, title: "Chart #3 : Expenses" },
-        { visible: true, title: "Chart #4 : Product Return" }
-    ],
+    charts: {
+        actions: {
+            iconClick: chartsMenuIconClick,
+            iconCloseClick: chartsIconCloseClick,
+            iconSettingsClick: chartsIconSettingsClick,
+            //mouseDown: chartMouseDown
+        },
+        items: [
+            { title: "Chart #1 : Star Rating", visible: true, settings: false, menu: false, itemVisible: true },
+            { title: "Chart #2 : Average Cost", visible: true, settings: false, menu: false, itemVisible: true },
+            { title: "Chart #3 : Expenses", visible: true, settings: false, menu: false, itemVisible: true },
+            { title: "Chart #4 : Product Return", visible: true, settings: false, menu: false, itemVisible: true }
+        ]
+    },
     subMenus: {
         visible: false,
         action: testClick,
@@ -33,7 +53,10 @@ var HeaderSubMenus = function (props) {
         ce('div', { className: ((props.subMenus.visible) ? "subMenuWrapper clicked" : "subMenuWrapper") },
             props.subMenus.items.map(function (element, index) {
                 return (
-                    ce('div', { key: index, onClick: props.subMenus.action }, element.title)
+                    ce('div', {
+                        key: index,
+                        onClick: props.subMenus.action
+                    }, element.title)
                 )
             })
         );
@@ -62,24 +85,37 @@ var MenuSection = function (props) {
 var Chart = function (props) {
     var out =
         ce('div', { className: "content" },
-            props.charts.map(function (element, index) {
+            props.charts.items.map(function (element, index) {
                 return (
-                    ce('div', { key: index, className: "chartWrapper" },
+                    ce('div', {
+                        key: index,
+                        className: ((element.itemVisible) ? "chartWrapper visible" : "chartWrapper invisible")
+                        // onMouseDown: props.charts.actions.mouseDown
+                    },
                         ce('div', { className: "title" },
                             ce('div', { className: "dragdrop" }, ce('div', {})),
                             ce('div', { className: "text" }, element.title),
-                            ce('div', { className: "optionsIcon" },
+                            ce('div', {
+                                className: ((element.menu) ? "optionsIcon clicked" : "optionsIcon"),
+                                onClick: function () { props.charts.actions.iconClick(index) }
+                            },
                                 ce('div', { className: "icon" },
                                     ce('div', {}), ce('div', {}), ce('div', {})
                                 ),
-                                ce('div', { className: "menu" },
-                                    ce('div', { className: "subMenu" }, "Close"),
-                                    ce('div', { className: "subMenu" }, "Options")
+                                ce('div', { className: ((element.menu) ? "menu clicked" : "menu") },
+                                    ce('div', {
+                                        className: "subMenu",
+                                        onClick: function () { props.charts.actions.iconCloseClick(index) }
+                                    }, "Close"),
+                                    ce('div', {
+                                        className: "subMenu",
+                                        onClick: function () { props.charts.actions.iconSettingsClick(index) }
+                                    }, "Options")
                                 )
                             )
                         ),
-                        ce('div', { className: "charts" },
-                            ce('div', { className: "options" },
+                        ce('div', { className: ((element.visible) ? "charts" : "charts clicked") },
+                            ce('div', { className: ((element.settings) ? "options visible" : "options invisible") },
                                 ce('div', { className: "row" },
                                     ce('div', { className: "label" }, "From"),
                                     ce('div', { className: "date" },
@@ -93,7 +129,10 @@ var Chart = function (props) {
                                     )
                                 ),
                                 ce('div', { className: "row" },
-                                    ce('div', { className: "closeIcon" }, "Close")
+                                    ce('div', {
+                                        className: "closeIcon",
+                                        onClick: function () { props.charts.actions.iconSettingsClick(index) }
+                                    }, "Close")
                                 )
                             ),
                             ce('div', { className: "pie" })
