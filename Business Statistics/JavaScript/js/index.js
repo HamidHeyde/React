@@ -38,26 +38,6 @@ for ( i=0; i<chartDivs.length; i++)
   dragElement(this,event);});
 }
 
-placeCharts();
-//Chart placement
-function placeCharts()
-{
-  var c = document.getElementsByClassName('chartWrapper');
-  var d=["0px","500px","0px","500px"];
-  var e=["30px","30px","550px","550px"];;
-
-  var j=0;
-  for ( i=0; i<c.length; i++)
-  {
-    if ((c[i].style.display=='block')||(c[i].style.display==''))
-    {
-      c[i].style.marginLeft = d[j];
-      c[i].style.marginTop = e[j];
-      j++;
-    }
-  }
-}
-
 function dragElement(elmnt,e) {
 
   var cx = parseInt(elmnt.style.left)?parseInt(elmnt.style.left):0;
