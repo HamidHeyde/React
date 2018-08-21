@@ -6,26 +6,15 @@ var topMenuClick = function (event) {
     state.subMenus.visible = !state.subMenus.visible;
     renderApp();
 };
-function placeCharts()
-{
-  var c = document.getElementsByClassName('chartWrapper');
-  var d=["0px","500px","0px","500px"];
-  var e=["30px","30px","550px","550px"];;
-
-  var j=0;
-  for ( i=0; i<c.length; i++)
-  {
-    if ((c[i].style.display=='block')||(c[i].style.display==''))
-    {
-      c[i].style.marginLeft = d[j];
-      c[i].style.marginTop = e[j];
-      j++;
-    }
-  }
-}
 //===========GLOBALS============
 var ce = React.createElement;
 var state = {
+    charts: [
+        { visible: true, title: "Chart #1 : Star Rating" },
+        { visible: true, title: "Chart #2 : Average Cost" },
+        { visible: true, title: "Chart #3 : Expenses" },
+        { visible: true, title: "Chart #4 : Product Return" }
+    ],
     subMenus: {
         visible: false,
         action: testClick,
@@ -70,11 +59,25 @@ var MenuSection = function (props) {
     return out;
 };
 
+var Chart = function (props) {
+    var out =
+        ce('div', { className: "content" },
+            props.charts.map(function (element, index) {
+                return (
+                    ce('div', { key: index, className: "chartWrapper" },
+                        ce('div', { className: "title" }),
+                        ce('div', { className: "charts" })
+                    )
+                )
+            })
+        )
+    return out;
+};
+
 var ChartsSection = function (props) {
     var out =
         ce('div', { className: props.cName },
-            ce('div', { className: "content" },
-            )
+                ce(Chart, { charts: props.charts })
         );
     return out;
 };
@@ -87,7 +90,10 @@ var App = function (props) {
                 menuAction: state.topMenuAction,
                 subMenus: state.subMenus
             }),
-            ce(ChartsSection, { cName: "application" })
+            ce(ChartsSection, {
+                cName: "application",
+                charts: state.charts
+            })
         );
     return out;
 };
