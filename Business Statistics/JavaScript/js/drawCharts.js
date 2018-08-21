@@ -1,3 +1,23 @@
+placeCharts();
+//Chart placement
+function placeCharts()
+{
+  var c = document.getElementsByClassName('chartWrapper');
+  var d=["0px","500px","0px","500px"];
+  var e=["30px","30px","550px","550px"];;
+
+  var j=0;
+  for ( i=0; i<c.length; i++)
+  {
+    if ((c[i].style.display=='block')||(c[i].style.display==''))
+    {
+      c[i].style.marginLeft = d[j];
+      c[i].style.marginTop = e[j];
+      j++;
+    }
+  }
+}
+
 drawChart1((document.getElementsByClassName('pie')[0]));
   drawChart2((document.getElementsByClassName('pie')[1]));
   drawChart3((document.getElementsByClassName('pie')[2]));
