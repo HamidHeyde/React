@@ -65,8 +65,39 @@ var Chart = function (props) {
             props.charts.map(function (element, index) {
                 return (
                     ce('div', { key: index, className: "chartWrapper" },
-                        ce('div', { className: "title" }),
-                        ce('div', { className: "charts" })
+                        ce('div', { className: "title" },
+                            ce('div', { className: "dragdrop" }, ce('div', {})),
+                            ce('div', { className: "text" }, element.title),
+                            ce('div', { className: "optionsIcon" },
+                                ce('div', { className: "icon" },
+                                    ce('div', {}), ce('div', {}), ce('div', {})
+                                ),
+                                ce('div', { className: "menu" },
+                                    ce('div', { className: "subMenu" }, "Close"),
+                                    ce('div', { className: "subMenu" }, "Options")
+                                )
+                            )
+                        ),
+                        ce('div', { className: "charts" },
+                            ce('div', { className: "options" },
+                                ce('div', { className: "row" },
+                                    ce('div', { className: "label" }, "From"),
+                                    ce('div', { className: "date" },
+                                        ce('input', { type: 'date' })
+                                    )
+                                ),
+                                ce('div', { className: "row" },
+                                    ce('div', { className: "label" }, "To"),
+                                    ce('div', { className: "date" },
+                                        ce('input', { type: 'date' })
+                                    )
+                                ),
+                                ce('div', { className: "row" },
+                                    ce('div', { className: "closeIcon" }, "Close")
+                                )
+                            ),
+                            ce('div', { className: "pie" })
+                        )
                     )
                 )
             })
@@ -77,7 +108,7 @@ var Chart = function (props) {
 var ChartsSection = function (props) {
     var out =
         ce('div', { className: props.cName },
-                ce(Chart, { charts: props.charts })
+            ce(Chart, { charts: props.charts })
         );
     return out;
 };
