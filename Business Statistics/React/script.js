@@ -1,5 +1,5 @@
 //===========FUNCTIONS============
-var testClick = function (evernt) {
+var testClick = function (event) {
     console.log(event.target);
 };
 var topMenuClick = function (event) {
@@ -22,7 +22,7 @@ var chartsIconSettingsClick = function (id) {
 var ce = React.createElement;
 var state = {
     charts: {
-        positions:[true,true,true,true],
+        spots: [true, true, true, true],
         actions: {
             iconClick: chartsMenuIconClick,
             iconCloseClick: chartsIconCloseClick,
@@ -40,10 +40,10 @@ var state = {
         visible: false,
         action: testClick,
         items: [
-            { title: "Aministrator: Access (All)", access: [1, 2, 3, 4] },
-            { title: "User 1: Access (1:2)", access: [1, 1, 0, 0] },
-            { title: "User 2: Access (1:4)", access: [1, 0, 0, 4] },
-            { title: "User 3: Access (2:3)", access: [0, 1, 3, 0] }
+            { title: "Aministrator: Access (All)", access: [true, true, true, true] },
+            { title: "User 1: Access (1:2)", access: [true, true, false, false] },
+            { title: "User 2: Access (1:4)", access: [true, false, false, true] },
+            { title: "User 3: Access (2:3)", access: [false, true, true, false] }
         ],
     },
     topMenuAction: topMenuClick
@@ -56,7 +56,7 @@ var HeaderSubMenus = function (props) {
                 return (
                     ce('div', {
                         key: index,
-                        onClick: props.subMenus.action
+                        onClick: props.subMenus.action(index)
                     }, element.title)
                 )
             })
@@ -83,6 +83,26 @@ var MenuSection = function (props) {
     return out;
 };
 
+var chartStyle = function (index) {
+    var style = "chartWrapper";
+
+    style += ((state.charts.items[index].itemVisible) ? " visible" : " invisible");
+
+    if (style.indexOf("invisible") == -1) {
+
+        style += ((state.charts.spots[0])
+            ? " first" : ((state.charts.spots[1])
+                ? " second" : ((state.charts.spots[2])
+                    ? " third" : " fourth")));
+
+        (style.indexOf("first") > -1)
+            ? state.charts.spots[0] = false : ((style.indexOf("second") > -1)
+                ? state.charts.spots[1] = false : ((style.indexOf("third") > -1)
+                    ? state.charts.spots[2] = false : state.charts.spots[3] = false));
+    }
+
+    return style;
+};
 var Chart = function (props) {
     var out =
         ce('div', { className: "content" },
@@ -90,7 +110,7 @@ var Chart = function (props) {
                 return (
                     ce('div', {
                         key: index,
-                        className: ((element.itemVisible) ? "chartWrapper visible" : "chartWrapper invisible")
+                        className: chartStyle(index)
                         // onMouseDown: props.charts.actions.mouseDown
                     },
                         ce('div', { className: "title" },
@@ -107,7 +127,7 @@ var Chart = function (props) {
                                     ce('div', {
                                         className: "subMenu",
                                         onClick: function () { props.charts.actions.iconCloseClick(index) }
-                                    }, ((element.visible)?"Close":"Open")),
+                                    }, ((element.visible) ? "Close" : "Open")),
                                     ce('div', {
                                         className: "subMenu",
                                         onClick: function () { props.charts.actions.iconSettingsClick(index) }

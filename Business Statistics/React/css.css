@@ -409,3 +409,19 @@ input[type="date"] {
 .invisible{
   display: none;
 }
+.first{
+  margin-left: 0px;
+  margin-top:30px;
+}
+.second{
+  margin-left: 500px;
+  margin-top:30px;
+}
+.third{
+  margin-left: 0px;
+  margin-top:550px;
+}
+.fourth{
+  margin-left: 500px;
+  margin-top:550px;
+}
