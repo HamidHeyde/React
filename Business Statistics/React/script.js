@@ -18,6 +18,14 @@ var chartsIconSettingsClick = function (id) {
     state.charts.items[id].settings = !state.charts.items[id].settings;
     renderApp();
 };
+var setAccess = function (id) {
+
+    state.subMenus.items[id].access.map(function (element, index) {
+        state.charts.items[index].itemVisible = element;
+    });
+
+    renderApp();
+};
 //===========GLOBALS============
 var ce = React.createElement;
 var state = {
@@ -38,7 +46,7 @@ var state = {
     },
     subMenus: {
         visible: false,
-        action: testClick,
+        action: setAccess,
         items: [
             { title: "Aministrator: Access (All)", access: [true, true, true, true] },
             { title: "User 1: Access (1:2)", access: [true, true, false, false] },
@@ -56,7 +64,7 @@ var HeaderSubMenus = function (props) {
                 return (
                     ce('div', {
                         key: index,
-                        onClick: props.subMenus.action(index)
+                        onClick: function () { props.subMenus.action(index) }
                     }, element.title)
                 )
             })
@@ -189,6 +197,10 @@ var App = function (props) {
     return out;
 };
 //===== APP RENDERER =======
-var renderApp = function () { ReactDOM.render(ce(App, { cName: "wrapper" }), document.getElementById('app')); };
+var renderApp = function () {
+    var originalState = [true, true, true, true];
+    state.charts.spots = originalState;
+    ReactDOM.render(ce(App, { cName: "wrapper" }), document.getElementById('app'));
+};
 //Rendering App
 renderApp();
