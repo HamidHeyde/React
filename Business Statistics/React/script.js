@@ -22,6 +22,7 @@ var chartsIconSettingsClick = function (id) {
 var ce = React.createElement;
 var state = {
     charts: {
+        positions:[true,true,true,true],
         actions: {
             iconClick: chartsMenuIconClick,
             iconCloseClick: chartsIconCloseClick,
@@ -106,7 +107,7 @@ var Chart = function (props) {
                                     ce('div', {
                                         className: "subMenu",
                                         onClick: function () { props.charts.actions.iconCloseClick(index) }
-                                    }, "Close"),
+                                    }, ((element.visible)?"Close":"Open")),
                                     ce('div', {
                                         className: "subMenu",
                                         onClick: function () { props.charts.actions.iconSettingsClick(index) }
